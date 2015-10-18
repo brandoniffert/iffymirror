@@ -10,6 +10,8 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   text-align: right;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .site-wrapper {
