@@ -22,6 +22,9 @@ server.listen(3000);
 
 io.on('connect', function () {
   fetchWeather();
+
+  // Fetch the weather every 15 mins
+  setInterval(fetchWeather, 900000);
 });
 
 function fetchWeather () {
@@ -31,7 +34,8 @@ function fetchWeather () {
       var result = JSON.parse(body);
       var data = {
         "currentTemp": parseInt(result.currently.temperature),
-        "summary": result.currently.summary
+        "summary": result.currently.summary,
+        "icon": result.currently.icon.replace(/-/g, '_').toUpperCase()
       };
 
       io.sockets.emit('weatherUpdate', data);

@@ -15,18 +15,30 @@ body {
 }
 
 .site-wrapper {
-  padding: 20px;
+  padding: 0 20px;
 }
 
 #time {
-  font-size: 175px;
+  font-size: 225px;
+  position: relative;
+  right: -15px;
 }
 
 #date {
-  font-size: 30px;
+  font-size: 50px;
 }
 
 #weather {
-  font-size: 50px;
-  margin-top: 20px;
+  font-size: 35px;
+  margin-top: 15px;
+}
+
+#currently {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#currently-conditions {
+  margin-left: 10px;
 }
