@@ -19,7 +19,8 @@ body {
 }
 
 #time {
-  font-size: 225px;
+  font-size: 260px;
+  line-height: 1;
   position: relative;
   right: -5px;
 }
@@ -30,7 +31,7 @@ body {
 
 #weather {
   font-size: 35px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 #currently {
@@ -40,5 +41,5 @@ body {
 }
 
 #currently-conditions {
-  margin-left: 10px;
+  margin-left: 15px;
 }
