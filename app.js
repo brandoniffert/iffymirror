@@ -16,8 +16,13 @@ app.use(function (req, res, next) {
   next()
 });
 
+var opts = {
+  root: path.join(__dirname, 'public'),
+  lastModified: false
+};
+
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile('index.html', opts);
 });
 
 app.get('/refresh', function (req, res) {
