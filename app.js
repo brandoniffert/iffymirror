@@ -35,8 +35,8 @@ server.listen(3000);
 io.on('connect', function () {
   fetchWeather();
 
-  // Fetch the weather every 15 mins
-  setInterval(fetchWeather, 900000);
+  // Fetch the weather every 10 mins
+  setInterval(fetchWeather, 600000);
 });
 
 function fetchWeather () {
