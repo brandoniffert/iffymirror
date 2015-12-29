@@ -21,6 +21,8 @@ var opts = {
   lastModified: false
 };
 
+var connected = false;
+
 app.get('/', function (req, res) {
   res.sendFile('index.html', opts);
 });
@@ -36,7 +38,10 @@ io.on('connect', function () {
   fetchWeather();
 
   // Fetch the weather every 10 mins
-  setInterval(fetchWeather, 600000);
+  if (!connected) {
+    setInterval(fetchWeather, 600000);
+    connected = true;
+  }
 });
 
 function fetchWeather () {
