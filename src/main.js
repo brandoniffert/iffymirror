@@ -13,7 +13,7 @@ var setupConnection = function () {
 
   socket.on('weatherUpdate', function (data) {
     var $conditions = document.getElementById('currently-conditions');
-    var currently = data.currentTemp + '&deg;F ' + data.summary;
+    var currently = data.currentTemp + '&deg;F ' + ' (' + data.apparentTemp + '&deg;F) ' + data.summary;
     $conditions.innerHTML = currently;
     skycons.set('currently-skycon', Skycons[data.icon]);
     skycons.play();

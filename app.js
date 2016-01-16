@@ -51,6 +51,7 @@ function fetchWeather () {
       var result = JSON.parse(body);
       var data = {
         "currentTemp": parseInt(result.currently.temperature),
+        "apparentTemp": parseInt(result.currently.apparentTemperature),
         "summary": result.currently.summary,
         "icon": result.currently.icon.replace(/-/g, '_').toUpperCase()
       };
