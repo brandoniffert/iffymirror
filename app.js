@@ -49,9 +49,17 @@ function fetchWeather () {
   request(url, function (error, resp, body) {
     if (!error && resp.statusCode === 200) {
       var result = JSON.parse(body);
+
+      var currentTemp = parseInt(result.currently.temperature);
+      var apparentTemp = parseInt(result.currently.apparentTemperature);
+
+      if (currentTemp === apparentTemp) {
+        apparentTemp = false;
+      }
+
       var data = {
-        "currentTemp": parseInt(result.currently.temperature),
-        "apparentTemp": parseInt(result.currently.apparentTemperature),
+        "currentTemp": currentTemp,
+        "apparentTemp": apparentTemp,
         "summary": result.currently.summary,
         "icon": result.currently.icon.replace(/-/g, '_').toUpperCase()
       };
