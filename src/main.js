@@ -22,7 +22,7 @@ var setupConnection = function () {
 
 var setDateTime = function () {
   $time.innerHTML = moment().format('HH:mm');
-  $date.innerHTML = moment().format('ddd MMM Do, YYYY');
+  $date.innerHTML = moment().format('ddd MMM D, YYYY');
 };
 
 var setIntervals = function () {
