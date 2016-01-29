@@ -4,6 +4,7 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var request = require('request');
+var fs = require('fs');
 
 require('./env.js');
 
@@ -36,10 +37,12 @@ server.listen(3000);
 
 io.on('connect', function () {
   fetchWeather();
+  fetchTrivia();
 
-  // Fetch the weather every 10 mins
+  // Fetch every 10 mins
   if (!connected) {
     setInterval(fetchWeather, 600000);
+    setInterval(fetchTrivia, 600000);
     connected = true;
   }
 });
@@ -65,6 +68,17 @@ function fetchWeather () {
       };
 
       io.sockets.emit('weatherUpdate', data);
+    }
+  });
+}
+
+function fetchTrivia () {
+  fs.readFile('trivia-free-answer', 'utf8', function (err, contents) {
+    if (err) {
+      io.sockets.emit('triviaFreeAnswer', false);
+    }
+    else {
+      io.sockets.emit('triviaFreeAnswer', contents);
     }
   });
 }
