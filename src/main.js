@@ -13,6 +13,7 @@ var setupConnection = function () {
 
   socket.on('weatherUpdate', function (data) {
     var $conditions = document.getElementById('currently-conditions');
+    var $upcoming = document.getElementById('upcoming-conditions');
     var currently = data.currentTemp + '&deg;F ';
 
     if (data.apparentTemp) {
@@ -22,6 +23,23 @@ var setupConnection = function () {
 
     $conditions.innerHTML = currently;
     skycons.set('currently-skycon', Skycons[data.icon]);
+
+    var upcomingHtml = '';
+
+    data.next3Days.forEach(function (day, index) {
+      var html = '<li><canvas id="upcoming-icon-' + index + '" width="30" height="30"></canvas>';
+      html += day.day + ' ' + day.highTemp + '&deg;F/' + day.lowTemp + '&deg;F ' + day.summary;
+      html += '</li>';
+
+      upcomingHtml += html;
+    });
+
+    $upcoming.innerHTML = upcomingHtml;
+
+    data.next3Days.forEach(function (day, index) {
+      skycons.set('upcoming-icon-' + index, Skycons[day.icon]);
+    });
+
     skycons.play();
   });
 

@@ -47,7 +47,26 @@ body {
   margin-left: 15px;
 }
 
+#upcoming-conditions {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  font-size: 24px;
+}
+
+#upcoming-conditions li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+#upcoming-conditions li canvas {
+  position: relative;
+  right: 10px;
+}
+
 #trivia {
   font-size: 30px;
-  margin-top: 50px;
+  margin-top: 60px;
 }

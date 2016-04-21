@@ -52,6 +52,7 @@ function fetchWeather () {
   request(url, function (error, resp, body) {
     if (!error && resp.statusCode === 200) {
       var result = JSON.parse(body);
+      var next3Days = [];
 
       var currentTemp = parseInt(result.currently.temperature);
       var apparentTemp = parseInt(result.currently.apparentTemperature);
@@ -60,11 +61,28 @@ function fetchWeather () {
         apparentTemp = false;
       }
 
+      var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+      for (var i = 1; i < 4; i++) {
+        var dayData = result.daily.data[i];
+        var date = new Date();
+        date.setTime(dayData.time * 1000);
+
+        next3Days.push({
+          "day": days[date.getDay()],
+          "highTemp": parseInt(dayData.temperatureMax),
+          "lowTemp": parseInt(dayData.temperatureMin),
+          "icon": dayData.icon.replace(/-/g, '_').toUpperCase(),
+          "summary": dayData.summary.replace(/\./g, '')
+        });
+      }
+
       var data = {
         "currentTemp": currentTemp,
         "apparentTemp": apparentTemp,
         "summary": result.currently.summary,
-        "icon": result.currently.icon.replace(/-/g, '_').toUpperCase()
+        "icon": result.currently.icon.replace(/-/g, '_').toUpperCase(),
+        "next3Days": next3Days
       };
 
       io.sockets.emit('weatherUpdate', data);
