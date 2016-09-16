@@ -2,4 +2,4 @@
 
 set -e
 
-./node_modules/gulp/bin/gulp.js && forever restart app.js
+./node_modules/gulp/bin/gulp.js && pm2 restart iffymirror
