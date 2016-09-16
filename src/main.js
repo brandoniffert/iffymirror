@@ -42,18 +42,6 @@ var setupConnection = function () {
 
     skycons.play();
   });
-
-  socket.on('triviaFreeAnswer', function (data) {
-    var $trivia = document.getElementById('trivia');
-
-    if (data) {
-      $trivia.style.display = 'block';
-      $trivia.innerHTML = data;
-    }
-    else {
-      $trivia.style.display = 'none';
-    }
-  });
 };
 
 var setDateTime = function () {

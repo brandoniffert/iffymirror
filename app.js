@@ -37,12 +37,10 @@ server.listen(3000);
 
 io.on('connect', function () {
   fetchWeather();
-  fetchTrivia();
 
   // Fetch every 10 mins
   if (!connected) {
     setInterval(fetchWeather, 600000);
-    setInterval(fetchTrivia, 600000);
     connected = true;
   }
 });
@@ -86,17 +84,6 @@ function fetchWeather () {
       };
 
       io.sockets.emit('weatherUpdate', data);
-    }
-  });
-}
-
-function fetchTrivia () {
-  fs.readFile('trivia-free-answer', 'utf8', function (err, contents) {
-    if (err) {
-      io.sockets.emit('triviaFreeAnswer', false);
-    }
-    else {
-      io.sockets.emit('triviaFreeAnswer', contents);
     }
   });
 }
