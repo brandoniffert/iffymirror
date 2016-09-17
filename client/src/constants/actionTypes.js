@@ -1,1 +1,2 @@
 export const UPDATE_WEATHER = 'UPDATE_WEATHER';
+export const UPDATE_URBAN_WORD = 'UPDATE_URBAN_WORD';

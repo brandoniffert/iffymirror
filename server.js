@@ -5,6 +5,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var request = require('request');
 var fs = require('fs');
+var spawn = require('child_process').spawn;
 
 require('./env.js');
 
@@ -37,6 +38,7 @@ server.listen(3001);
 
 io.on('connect', function () {
   fetchWeather();
+  fetchUrbanWord();
 
   // Fetch every 5 mins
   if (!connected) {
@@ -45,7 +47,7 @@ io.on('connect', function () {
   }
 });
 
-function fetchWeather () {
+function fetchWeather() {
   var url = 'https://api.forecast.io/forecast/' + process.env['FORECASTIO_KEY'] + '/' + process.env['LAT_LONG'];
   request(url, function (error, resp, body) {
     if (!error && resp.statusCode === 200) {
@@ -81,5 +83,13 @@ function fetchWeather () {
 
       io.sockets.emit('weatherUpdate', data);
     }
+  });
+}
+
+function fetchUrbanWord() {
+  var script = spawn('python', ['urban-dictionary-word.py']);
+
+  script.stdout.on('data', function (data) {
+    io.sockets.emit('urbanWordUpdate', JSON.parse(data.toString()));
   });
 }

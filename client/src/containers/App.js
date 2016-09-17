@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Clock from '../components/Clock';
 import Weather from '../containers/Weather';
+import UrbanWord from '../containers/UrbanWord';
 
 class App extends Component {
   render() {
@@ -8,6 +9,7 @@ class App extends Component {
       <div>
         <Clock />
         <Weather />
+        <UrbanWord />
       </div>
     );
   }
