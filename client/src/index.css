@@ -9,7 +9,7 @@ body {
   color: white;
   font-family: 'Poppins', sans-serif;
   text-align: right;
-  padding: 5px;
+  padding: 10px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -24,7 +24,7 @@ body {
 
 .time {
   display: block;
-  font-size: 280px;
+  font-size: 270px;
   font-weight: 300;
   line-height: 1;
   position: relative;
@@ -58,13 +58,13 @@ body {
 
 .weather-today .current-temp .high-low {
   font-size: 30px;
-  opacity: 0.6;
+  opacity: 0.7;
   display: inline-block;
   margin-left: 20px;
 }
 
 .weather-today .summary {
-  font-size: 40px;
+  font-size: 24px;
   line-height: 1.5;
 }
 
@@ -80,6 +80,10 @@ body {
   line-height: 1.2;
 }
 
+.weather-future .day-name {
+  font-size: 24px;
+}
+
 .weather-future .high-low {
-  opacity: 0.6;
+  opacity: 0.7;
 }

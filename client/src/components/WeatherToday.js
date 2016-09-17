@@ -7,6 +7,7 @@ class WeatherToday extends Component {
       <div className="weather-today">
         <div className="current-temp">
           <Skycons color='white' icon={this.props.todayIcon} autoplay={true} />
+          <span>{this.props.todayShortSummary}</span>&nbsp;
           <span>{this.props.todayTemp}</span>
           <span className="high-low">{this.props.todayHigh} | {this.props.todayLow}</span>
         </div>

@@ -71,7 +71,8 @@ function fetchWeather () {
 
       var data = {
         todayTemp: currentTemp,
-        todaySummary: result.currently.summary,
+        todayShortSummary: result.currently.summary.replace(/\./g, ''),
+        todaySummary: result.daily.data[0].summary.replace(/\./g, ''),
         todayIcon: result.currently.icon.replace(/-/g, '_').toUpperCase(),
         todayHigh: parseInt(result.daily.data[0].temperatureMax),
         todayLow: parseInt(result.daily.data[0].temperatureMin),

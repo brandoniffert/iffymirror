@@ -4,6 +4,7 @@ import * as ActionTypes from '../constants/actionTypes';
 const initialState = {
   weather: {
     todayTemp: '-',
+    todayShortSummary: '-',
     todaySummary: '-',
     todayIcon: 'CLEAR_DAY',
     todayHigh: '-',
