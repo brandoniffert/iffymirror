@@ -4,4 +4,4 @@
 
 ## Installation
 
-Run `npm install --production` in root directory and inside `client` directory.
+Run `npm install` in root directory and inside `client` directory.
