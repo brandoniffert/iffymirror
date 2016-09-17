@@ -7,7 +7,7 @@ class UrbanWord extends Component {
 
     return (
       <div className="day-word">
-        <h2>Word of The Day</h2>
+        <h2>Word of the Day</h2>
         <div className="word">{state.urbanWord.word}</div>
         <div className="definition">{state.urbanWord.definition}</div>
       </div>
