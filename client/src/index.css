@@ -65,7 +65,7 @@ body {
 
 .weather-today .summary {
   font-size: 40px;
-  line-height: 1;
+  line-height: 1.5;
 }
 
 .weather-future {
