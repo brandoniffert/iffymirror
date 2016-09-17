@@ -23,8 +23,6 @@ var opts = {
   lastModified: false
 };
 
-var connected = false;
-
 app.get('/', function (req, res) {
   res.sendFile('index.html', opts);
 });
@@ -36,16 +34,13 @@ app.get('/refresh', function (req, res) {
 
 server.listen(3001);
 
+// Fetch weather every 5 mins, word every 1 hour
+setInterval(fetchWeather, 1000 * 60 * 5);
+setInterval(fetchUrbanWord, 1000 * 60 * 60);
+
 io.on('connect', function () {
   fetchWeather();
   fetchUrbanWord();
-
-  // Fetch weather every 5 mins, word every 1 hour
-  if (!connected) {
-    setInterval(fetchWeather, 1000 * 60 * 5);
-    setInterval(fetchUrbanWord, 1000 * 60 * 60);
-    connected = true;
-  }
 });
 
 function fetchWeather() {
