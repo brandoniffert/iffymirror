@@ -2,4 +2,4 @@
 
 set -e
 
-./node_modules/gulp/bin/gulp.js && pm2 restart iffymirror
+cd client && npm run build && pm2 restart iffymirror
