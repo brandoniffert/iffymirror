@@ -40,9 +40,10 @@ io.on('connect', function () {
   fetchWeather();
   fetchUrbanWord();
 
-  // Fetch every 5 mins
+  // Fetch weather every 5 mins, word every 1 hour
   if (!connected) {
-    setInterval(fetchWeather, 300000);
+    setInterval(fetchWeather, 1000 * 60 * 5);
+    setInterval(fetchUrbanWord, 1000 * 60 * 60);
     connected = true;
   }
 });
