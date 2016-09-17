@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: black;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  text-align: right;
+  padding: 5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.site-wrapper {
+  padding: 0 20px;
+}
+
+.clock {
+  margin-bottom: 50px;
+}
+
+.time {
+  display: block;
+  font-size: 280px;
+  font-weight: 300;
+  line-height: 1;
+  position: relative;
+  right: -5px;
+}
+
+.date {
+  font-weight: 300;
+  display: block;
+  font-size: 60px;
+  line-height: 1;
+}
+
+.weather-today {
+  margin-top: 20px;
+}
+
+.weather-today canvas {
+  max-width: 100px;
+  position: relative;
+  top: -4px;
+}
+
+.weather-today .current-temp {
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  line-height: 1;
+}
+
+.weather-today .current-temp .high-low {
+  font-size: 30px;
+  opacity: 0.6;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.weather-today .summary {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.weather-future {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  font-size: 20px;
+}
+
+.weather-future li {
+  margin: 20px 0;
+  line-height: 1.2;
+}
+
+.weather-future .high-low {
+  opacity: 0.6;
+}

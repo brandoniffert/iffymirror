@@ -1,3 +1,15 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
 node_modules
-public/scripts/bundle.js
+
+# testing
+coverage
+
+# production
+client/build
+
+# misc
+.DS_Store
+npm-debug.log
 env.js

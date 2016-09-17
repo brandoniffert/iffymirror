@@ -8,7 +8,7 @@ var fs = require('fs');
 
 require('./env.js');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use(function (req, res, next) {
   res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
 });
 
 var opts = {
-  root: path.join(__dirname, 'public'),
+  root: path.join(__dirname),
   lastModified: false
 };
 
@@ -33,14 +33,14 @@ app.get('/refresh', function (req, res) {
   res.send('Refreshed!');
 });
 
-server.listen(3000);
+server.listen(3001);
 
 io.on('connect', function () {
   fetchWeather();
 
-  // Fetch every 10 mins
+  // Fetch every 5 mins
   if (!connected) {
-    setInterval(fetchWeather, 600000);
+    setInterval(fetchWeather, 300000);
     connected = true;
   }
 });
@@ -50,14 +50,9 @@ function fetchWeather () {
   request(url, function (error, resp, body) {
     if (!error && resp.statusCode === 200) {
       var result = JSON.parse(body);
-      var next3Days = [];
+      var nextDays = [];
 
       var currentTemp = parseInt(result.currently.temperature);
-      var apparentTemp = parseInt(result.currently.apparentTemperature);
-
-      if (currentTemp === apparentTemp) {
-        apparentTemp = false;
-      }
 
       var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -66,21 +61,21 @@ function fetchWeather () {
         var date = new Date();
         date.setTime(dayData.time * 1000);
 
-        next3Days.push({
-          "day": days[date.getDay()],
-          "highTemp": parseInt(dayData.temperatureMax),
-          "lowTemp": parseInt(dayData.temperatureMin),
-          "icon": dayData.icon.replace(/-/g, '_').toUpperCase(),
-          "summary": dayData.summary.replace(/\./g, '')
+        nextDays.push({
+          dayName: days[date.getDay()],
+          highTemp: parseInt(dayData.temperatureMax),
+          lowTemp: parseInt(dayData.temperatureMin),
+          summary: dayData.summary.replace(/\./g, '')
         });
       }
 
       var data = {
-        "currentTemp": currentTemp,
-        "apparentTemp": apparentTemp,
-        "summary": result.currently.summary,
-        "icon": result.currently.icon.replace(/-/g, '_').toUpperCase(),
-        "next3Days": next3Days
+        todayTemp: currentTemp,
+        todaySummary: result.currently.summary,
+        todayIcon: result.currently.icon.replace(/-/g, '_').toUpperCase(),
+        todayHigh: parseInt(result.daily.data[0].temperatureMax),
+        todayLow: parseInt(result.daily.data[0].temperatureMin),
+        nextDays: nextDays
       };
 
       io.sockets.emit('weatherUpdate', data);
