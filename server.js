@@ -34,13 +34,11 @@ app.get('/refresh', function (req, res) {
 
 server.listen(3001);
 
-// Fetch weather every 5 mins, word every 1 hour
+// Fetch weather every 5 mins
 setInterval(fetchWeather, 1000 * 60 * 5);
-setInterval(fetchUrbanWord, 1000 * 60 * 60);
 
 io.on('connect', function () {
   fetchWeather();
-  fetchUrbanWord();
 });
 
 function fetchWeather() {
