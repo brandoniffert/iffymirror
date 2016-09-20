@@ -19,7 +19,7 @@ body {
 }
 
 .clock {
-  margin-bottom: 50px;
+  margin: -50px 0 50px;
 }
 
 .time {
@@ -70,7 +70,7 @@ body {
   list-style: none;
   margin: 40px 0 0;
   padding: 0;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .weather-future li {
@@ -80,19 +80,9 @@ body {
 
 .weather-future .day-name {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 30px;
 }
 
 .weather-future .high-low {
-  opacity: 0.7;
-}
-
-.day-word {
-  margin: 60px 0;
-  font-size: 24px;
-}
-
-.day-word .definition {
-  font-size: 20px;
   opacity: 0.7;
 }
