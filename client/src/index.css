@@ -42,7 +42,7 @@ body {
 }
 
 .weather-today canvas {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .weather-today .current-temp {
