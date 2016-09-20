@@ -79,11 +79,3 @@ function fetchWeather() {
     }
   });
 }
-
-function fetchUrbanWord() {
-  var script = spawn('python', ['urban-dictionary-word.py']);
-
-  script.stdout.on('data', function (data) {
-    io.sockets.emit('urbanWordUpdate', JSON.parse(data.toString()));
-  });
-}

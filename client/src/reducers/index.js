@@ -10,8 +10,7 @@ const initialState = {
     todayHigh: '-',
     todayLow: '-',
     nextDays: []
-  },
-  urbanWord: {}
+  }
 };
 
 const mirrorAppState = (state = initialState, action) => {
@@ -19,10 +18,6 @@ const mirrorAppState = (state = initialState, action) => {
     case ActionTypes.UPDATE_WEATHER:
       return Object.assign({}, state, {
         weather: action.payload
-      });
-    case ActionTypes.UPDATE_URBAN_WORD:
-      return Object.assign({}, state, {
-        urbanWord: action.payload
       });
     default:
       return state;
