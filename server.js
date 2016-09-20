@@ -42,7 +42,7 @@ io.on('connect', function () {
 });
 
 function fetchWeather() {
-  var url = 'https://api.forecast.io/forecast/' + process.env['FORECASTIO_KEY'] + '/' + process.env['LAT_LONG'];
+  var url = 'https://api.darksky.net/forecast/' + process.env['FORECASTIO_KEY'] + '/' + process.env['LAT_LONG'];
   request(url, function (error, resp, body) {
     if (!error && resp.statusCode === 200) {
       var result = JSON.parse(body);
